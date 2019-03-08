@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <link rel="shortcut icon" href="./icon/Icon.png" type="image/x-icon">
+    
+
+    <title>OLX</title>
+   
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="./styleSheets/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- <script src="/__/firebase/5.8.2/firebase-app.js"></script>
+    <script src="/__/firebase/5.8.2/firebase-auth.js"></script>
+    <script src="/__/firebase/5.8.2/firebase-database.js"></script>
+    <script src="/__/firebase/5.8.2/firebase-messaging.js"></script>
+    <script src="/__/firebase/init.js"></script> -->
+    <link rel="manifest" href="./manifest.json">
+  
+    <script type = "text/javascript" >
+        function preventBack(){window.history.forward();}
+         setTimeout("preventBack()", 0);
+         window.onunload=function(){null};
+     </script>
+</head>
+<body  onload="loadFun()">
+
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" style="background-color:black !important;" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand my-color" href="./index.html" style="margin-left:20px;margin-top:-20px;"><img src="./icon/Icon.png" alt="" height="60px" width="60px"></a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                       
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                  <div class="navbar-form navbar-left" >
+                                    <div class="form-group">
+                                      <input type="serach" style="width:400px;font-size:1.2em;padding: 5px;" class="form-control" id="search" placeholder="Search by AD" name="search">
+                                    </div>
+                                    <button class="btn btn-primary" onclick="searchAds()">Submit</button>
+                                    <button class="btn btn-info" onclick="location.reload()">Reset</button>
+
+                                </div>
+
+                               
+                               <li><span id="userN"></span></li>
+
+                                    <li id="signBtn"><a href="./pages/signUp.html"><span class="glyphicon glyphicon-user"></span> Sign Up </a></li>
+                                    <li id="logInBtn"><a href="./pages/logIn.html"><span class="glyphicon glyphicon-log-in"></span> Log in </a></li>
+                                  
+                                  
+      
+
+  
+            <li id="gBtn1" style="margin-left:20px;margin-top:9px;"> <button class="btn btn-success" onClick="createNewAdd()"> Create New Add</button></li>
+            <li id="gBtn2" style="margin-left:20px;margin-top:9px;">  <button class="btn btn-success" onClick="viewWishListFun()" >Wish lists</button></li>
+            
+            <li id="logOutBtn" ><a href="#" onclick="logOutFun()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+          
+
+                    </ul>
+                    </div>
+                </div>
+            </nav>
+
+<!-- <div class="col-md-12" style="height:20px" id="userGreet">
+
+
+
+</div> -->
+            <!-- <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> -->
+
+            <div id="homeImg"  class=" col-md-12 col-sm-12 col-xs-12"  style="margin-top:80px;">
+           <img src="./icon/home.PNG" alt="homeimg" height="400px" class="col-md-12">
+
+            </div>
+
+           
+
+            <div class="col-md-12" style="">
+
+                <table  class="col-md-12 " style=" box-shadow: 0px 0px 20px gray">
+                    <tr><h3> Search by Categories</h3></tr>
+                    <tr id="catsTable" style="">
+
+                    </tr>
+
+                 
+
+                </table>
+
+            </div>
+
+            <div class="col-md-12" style="height:20px;">
+
+            </div>
+
+            <div class="container">
+                <div class="row">
+            <div id="mainDiv">
+
+                </div>
+                </div>
+            </div>
+
+
+
+
+
+            <nav class="navbar navbar-inverse ">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" style="background-color:black !important;" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand my-color" href="./index.html" style="margin-left:20px;margin-top:-20px;"><img src="./icon/Icon.png" alt="" height="60px" width="60px"></a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                           
+                            <ul class="nav navbar-nav navbar-right">
+                                
+                                    <li><a ><span class="far fa-copyright"></span> Copy Right All rights Reserved</a></li>
+
+                                   
+                                  
+    
+                        </ul>
+                        </div>
+                    </div>
+                </nav>
+    
+
+
+
+    
+            
+<script src="./scripts/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+
+            <script>
+            //   const messaging = firebase.messaging();
+
+                //     window.addEventListener('load',()=> {
+                   
+                
+                //     if ('serviceWorker' in navigator) {
+                //         navigator.serviceWorker.register('./sw_olx.js')
+                //             .then(() => {
+                //                 console.log('service worker')
+                //             })
+                //     }
+                // })
+                    
+
+                                
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.register('./sw_olx_rv3.js').then(function(registration) {
+                        console.log('Service worker registered:'+registration.scope);
+                    }).catch(function(e) {
+                        console.log(e);
+                    })
+                
+                    .catch(function(error) {
+                        console.error("Something goes wrong while registering service worker");
+                        console.log(error);
+                    });
+                } else {
+                    console.log("Service Worker is not available");
+                }
+  
+
+
+
+            
+
+  
+                    </script>
+            
+           
+    
+</body>
+
+
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+</html>
+
+
+
